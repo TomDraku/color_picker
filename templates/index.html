@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en"></html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color analyzer</title>
+    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+    
+</head>
+
+<body>
+    
+   
+    <div class="upload">
+        <form class="upload_form" method="POST" enctype="multipart/form-data">
+            <input type="file" name = "img">
+            <button type="submit">Upload</button>
+        </form>
+    </div>
+
+    
+
+    {% if img %}
+    <h1>Rendered Image</h1>
+    <div class="container" style="background-color: white;">
+    <img src="{{img}}" class="uploaded_image">
+    </div>
+    
+    <h2>Ten the most common colors on the image</h2>
+
+    {% for color in my_colors %}
+    <div class="colors">
+        
+        <div class="color-box" style="background-color: rgb({{ color[0] }}, {{ color[1] }}, {{ color[2] }});"></div>
+        <span class="color-name">{{ color[0]}},{{ color[1]}}, {{ color[2]}}</span>
+         
+    </div>
+    {% endfor %}
+    {% else %}
+    <div class="container" >
+    <h1>Image will be render here...</h1>
+    </div>
+    {% endif %}
+
+
+    
+
+   
+
+
+</body>
